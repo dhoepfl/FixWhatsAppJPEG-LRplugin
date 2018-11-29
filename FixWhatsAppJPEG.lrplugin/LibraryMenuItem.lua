@@ -24,7 +24,7 @@ if catalog:getTargetPhoto() then
    logger:trace('FixWhatsAppJPEG: Will convert ' .. tostring( # photos ) .. ' photos')
 
    local progress = LrProgressScope( {
-      "title" = LOC "$$$/FixWhatsAppJPEG/LibraryMenuItem/Progress=Fixing images ..."
+      title = LOC "$$$/FixWhatsAppJPEG/LibraryMenuItem/Progress=Fixing images ..."
       })
    progress:setCancelable(true)
    progress:setPortionComplete( 0, # photos )

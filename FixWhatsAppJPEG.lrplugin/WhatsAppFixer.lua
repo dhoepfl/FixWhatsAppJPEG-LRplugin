@@ -6,7 +6,7 @@ FixWhatsAppJPEG plugin.
 ------------------------------------------------------------------------------]]
 
 local LrPathUtils = import 'LrPathUtils'
-local LrShell = import 'LrShell'
+local LrTasks = import 'LrTasks'
 
 local WhatsAppFixer = {}
 
@@ -22,7 +22,7 @@ function WhatsAppFixer.fixPhoto(photo)
       command = LrPathUtils.child(LrPathUtils.child( _PLUGIN.path, "mac" ), "fixWhatsApp" )
    end
 
-   if LrShell.openFilesInCommandLineProcess({ photo.path }, command ) == 0 then
+   if LrTasks.execute(command .. " '" .. photo.path .. "' '" .. photo.path .. "'") == 0 then
       photo.catalog:withPrivateWriteAccessDo(
          function( context ) 
             photo:setPropertyForPlugin(_PLUGIN, 'WhatsAppFixer_did_handle', 'yes')
