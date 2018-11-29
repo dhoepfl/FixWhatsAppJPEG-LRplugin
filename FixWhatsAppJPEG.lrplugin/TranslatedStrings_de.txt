@@ -1,7 +1,9 @@
 "$$$/FixWhatsAppJPEG/PluginName=Fix WhatsApp JPEG"
-"$$$/FixWhatsAppJPEG/LibraryMenuItemTitle=Fix &WhatsApp JPEG"
+"$$$/FixWhatsAppJPEG/LibraryActionMenuItemTitle=Korrigiere Bild ..."
+"$$$/FixWhatsAppJPEG/LibraryResetMenuItemTitle=Entferne Marker ..."
 
-"$$$/FixWhatsAppJPEG/LibraryMenuItem/Progress=Korrigiere Bilder ..."
+"$$$/FixWhatsAppJPEG/LibraryActionMenuItem/Progress=Korrigiere Bilder ..."
+"$$$/FixWhatsAppJPEG/LibraryResetMenuItem/Progress=Verarbeite Bilder ..."
 
 "$$$/FixWhatsAppJPEG/Fields/WhatsAppFixer_did_handle/Title=Korrigiert"
 "$$$/FixWhatsAppJPEG/Fields/WhatsAppFixer_did_handle/Unset=Nein"

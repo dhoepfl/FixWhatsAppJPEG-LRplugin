@@ -34,5 +34,12 @@ function WhatsAppFixer.fixPhoto(photo)
    return true
 end
 
+function WhatsAppFixer.removeMarker(photo)
+   photo.catalog:withPrivateWriteAccessDo(
+      function( context ) 
+         photo:setPropertyForPlugin(_PLUGIN, 'WhatsAppFixer_did_handle', nil)
+      end ) 
+end
+
 return WhatsAppFixer
 

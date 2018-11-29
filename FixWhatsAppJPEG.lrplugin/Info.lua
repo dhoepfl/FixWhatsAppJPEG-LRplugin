@@ -17,9 +17,16 @@ return {
 
    LrMetadataProvider = 'MetadataDefinition.lua',
    LrLibraryMenuItems = {
-      title = LOC "$$$/FixWhatsAppJPEG/LibraryMenuItemTitle=Fix &WhatsApp JPEG",
-      file = 'LibraryMenuItem.lua',
-      enabledWhen = 'photosSelected'
+      {
+         title = LOC "$$$/FixWhatsAppJPEG/LibraryActionMenuItemTitle=Fix photo ...",
+         file = 'LibraryActionMenuItem.lua',
+         enabledWhen = 'photosSelected'
+      },
+      {
+         title = LOC "$$$/FixWhatsAppJPEG/LibraryResetMenuItemTitle=Remove marker",
+         file = 'LibraryResetMenuItem.lua',
+         enabledWhen = 'photosSelected'
+      },
    },
 
    VERSION = { major=1, minor=0, revision=0, build=0, },

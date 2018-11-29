@@ -1,6 +1,6 @@
 --[[----------------------------------------------------------------------------
 
-LibraryMenuItem.lua
+LibraryActionMenuItem.lua
 FixWhatsAppJPEG plugin.
 
 ------------------------------------------------------------------------------]]
@@ -21,10 +21,10 @@ local catalog = LrApplication:activeCatalog()
 if catalog:getTargetPhoto() then
    local photos = catalog:getTargetPhotos() 
 
-   logger:trace('FixWhatsAppJPEG: Will convert ' .. tostring( # photos ) .. ' photos')
+   logger:trace('FixWhatsAppJPEG: Will remove marker from ' .. tostring( # photos ) .. ' photos')
 
    local progress = LrProgressScope( {
-      title = LOC "$$$/FixWhatsAppJPEG/LibraryMenuItem/Progress=Fixing images ..."
+      title = LOC "$$$/FixWhatsAppJPEG/LibraryResetMenuItem/Progress=Processing images ..."
       })
    progress:setCancelable(true)
    progress:setPortionComplete( 0, # photos )
@@ -36,22 +36,7 @@ if catalog:getTargetPhoto() then
             logger:trace('FixWhatsAppJPEG: Working on ' .. tostring( caption ))
 
             progress:setCaption(caption)
-            if not photo:getRawMetadata("isVirtualCopy") then
-               local format = photo:getRawMetadata("fileFormat")
-               if format == "JPG" then
-                  if photo:checkPhotoAvailability() then
-                     if not WhatsAppFixer.fixPhoto(photo) then
-                        logger:error('FixWhatsAppJPEG: Failed to handle ' .. tostring(photo.path))
-                     end
-                  else
-                     logger:trace('FixWhatsAppJPEG: Skipping unavailable photo')
-                  end
-               else
-                  logger:trace('FixWhatsAppJPEG: Skipping format ' .. tostring(format))
-               end
-            else
-               logger:trace('FixWhatsAppJPEG: Skipping virtual copy')
-            end
+            WhatsAppFixer.removeMarker(photo)
             progress:setPortionComplete( i, # photos )
          end
       end
