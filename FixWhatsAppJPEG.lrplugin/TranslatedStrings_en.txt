@@ -1,0 +1,8 @@
+"$$$/FixWhatsAppJPEG/PluginName=Fix WhatsApp JPEG"
+"$$$/FixWhatsAppJPEG/LibraryMenuItemTitle=Fix &WhatsApp JPEG"
+
+"$$$/FixWhatsAppJPEG/LibraryMenuItem/Progress=Fixing images ..."
+
+"$$$/FixWhatsAppJPEG/Fields/WhatsAppFixer_did_handle/Title=Fixed"
+"$$$/FixWhatsAppJPEG/Fields/WhatsAppFixer_did_handle/Unset=Nein"
+"$$$/FixWhatsAppJPEG/Fields/WhatsAppFixer_did_handle/True=Ja"
