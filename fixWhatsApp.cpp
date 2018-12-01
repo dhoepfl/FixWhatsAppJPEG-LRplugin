@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <sys/fcntl.h>
 #include <sys/stat.h>
+#include <sys/time.h>
 
 int main(int argc, char *argv[])
 {
@@ -105,10 +106,12 @@ int main(int argc, char *argv[])
    os.close();
 
 #ifdef AT_FDCWD
-   struct timespec outfileTimespec[2];
-   outfileTimespec[0] = infileStat.st_atimespec;
-   outfileTimespec[1] = infileStat.st_mtimespec;
-   ::utimensat(AT_FDCWD, outfile, outfileTimespec, 0);
+   struct timeval outfileTimespec[2];
+   outfileTimespec[0].tv_sec = infileStat.st_atimespec.tv_sec;
+   outfileTimespec[0].tv_usec = infileStat.st_atimespec.tv_nsec / 1000;
+   outfileTimespec[1].tv_sec = infileStat.st_mtimespec.tv_sec;
+   outfileTimespec[1].tv_usec = infileStat.st_mtimespec.tv_nsec / 1000;
+   ::utimes(outfile, outfileTimespec);
 #endif
 
    if (verbose) { std::cout << "Wrote " << count << " bytes to " << outfile << std::endl; }
