@@ -20,23 +20,11 @@ function WhatsAppFixer.fixPhoto(photo)
 
    if LrTasks.execute(command .. " '" .. photo.path .. "' '" .. photo.path .. "'") == 0 then
       photo:buildSmartPreview()
-
-      photo.catalog:withPrivateWriteAccessDo(
-         function( context ) 
-            photo:setPropertyForPlugin(_PLUGIN, 'WhatsAppFixer_did_handle', 'yes')
-         end ) 
    else
       return false
    end
 
    return true
-end
-
-function WhatsAppFixer.removeMarker(photo)
-   photo.catalog:withPrivateWriteAccessDo(
-      function( context ) 
-         photo:setPropertyForPlugin(_PLUGIN, 'WhatsAppFixer_did_handle', nil)
-      end ) 
 end
 
 return WhatsAppFixer
