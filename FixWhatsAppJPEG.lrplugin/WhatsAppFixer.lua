@@ -11,10 +11,6 @@ local LrTasks = import 'LrTasks'
 local WhatsAppFixer = {}
 
 function WhatsAppFixer.fixPhoto(photo)
-   -- if not forced and photo:getPropertyForPlugin(_PLUGIN, 'WhatsAppFixer_did_handle', true, true) ~= "yes" then
-   -- return true
-   -- end
-
    local command
    if WIN_ENV == true then
       command = LrPathUtils.child(LrPathUtils.child( _PLUGIN.path, "win" ), "fixWhatsApp.exe" )
@@ -23,6 +19,8 @@ function WhatsAppFixer.fixPhoto(photo)
    end
 
    if LrTasks.execute(command .. " '" .. photo.path .. "' '" .. photo.path .. "'") == 0 then
+      photo:buildSmartPreview()
+
       photo.catalog:withPrivateWriteAccessDo(
          function( context ) 
             photo:setPropertyForPlugin(_PLUGIN, 'WhatsAppFixer_did_handle', 'yes')
