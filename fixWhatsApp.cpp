@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
+#include <cstdint>
 #include <sys/fcntl.h>
 #include <sys/stat.h>
 
@@ -36,11 +37,13 @@ int main(int argc, char *argv[])
    infile = argv[optind];
    outfile = argv[optind+1];
 
+#ifdef AT_FDCWD
    struct stat infileStat;
    if (0 != ::lstat(infile, &infileStat)) {
       std::cerr << "Failed to stat " << infile << std::endl;
       return -1;
    }
+#endif
 
    std::ifstream is(infile, std::ifstream::binary);
    if (!is) {
@@ -101,10 +104,12 @@ int main(int argc, char *argv[])
    }
    os.close();
 
+#ifdef AT_FDCWD
    struct timespec outfileTimespec[2];
    outfileTimespec[0] = infileStat.st_atimespec;
    outfileTimespec[1] = infileStat.st_mtimespec;
    ::utimensat(AT_FDCWD, outfile, outfileTimespec, 0);
+#endif
 
    if (verbose) { std::cout << "Wrote " << count << " bytes to " << outfile << std::endl; }
 
