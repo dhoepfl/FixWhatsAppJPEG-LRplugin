@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
    }
 
    if (usage) {
-      std::cerr << "Usage: " << argv[0] << "[-v] <input> <output>" << std::endl;
+      std::cerr << "Usage: " << argv[0] << " [-v] <input> <output>" << std::endl;
       return -1;
    }
    infile = argv[optind];
