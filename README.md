@@ -13,4 +13,4 @@ This plugin monitors your library for JPEGs that show the described error.
 To compile fixWhatsApp.cpp:
 
  * On macOS: `c++ -o FixWhatsAppJPEG.lrplugin/mac/fixWhatsApp fixWhatsApp.cpp`
- * For windows: `bin/i686-w64-mingw32-c++ -o FixWhatsAppJPEG.lrplugin/win/fixWhatsApp.exe -std=c++11 fixWhatsApp.cpp  -static -static-libgcc -static-libstdc++ -static-libasan -static-libtsan
+ * For windows: `bin/i686-w64-mingw32-c++ -o FixWhatsAppJPEG.lrplugin/win/fixWhatsApp.exe -std=c++11 fixWhatsApp.cpp  -static -static-libgcc -static-libstdc++ -static-libasan -static-libtsan`
